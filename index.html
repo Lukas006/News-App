@@ -96,10 +96,6 @@
                 </div>
             </div>
         </div>
-
-
-
-
     </div>
 
     <!-- Taskbar -->
@@ -124,6 +120,15 @@
 
     <!-- Google Custom Search Engine Script -->
     <script async src="https://cse.google.com/cse.js?cx=27968ad0ac7d1440f"></script>
+
+    <script>
+        function navigateTo(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.add('hidden'));  // Alle Seiten verstecken
+            const pageElement = document.getElementById(`${page}-page`);
+            pageElement.classList.remove('hidden');  // Die ausgewählte Seite anzeigen
+        }
+    </script>
 
 </body>
 
