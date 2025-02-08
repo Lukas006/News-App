@@ -6,6 +6,11 @@
     <title>News Feed UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="News Feed">
+    <link rel="apple-touch-icon" href="icon.png">
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-between">
     <div class="w-full max-w-sm bg-white rounded-xl shadow-md overflow-hidden">
@@ -15,13 +20,13 @@
                 <button class="p-2 bg-gray-200 rounded-full">
                     <span class="material-icons">volume_up</span>
                 </button>
-                <img src="https://via.placeholder.com/30" class="rounded-full" alt="User">
+                <img src="https://placehold.co/30x30" class="rounded-full" alt="User">
             </div>
         </div>
         
         <div class="relative m-4">
             <span class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
-            <img src="https://via.placeholder.com/350x200" class="rounded-lg w-full" alt="GPU Image">
+            <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="GPU Image">
             <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
                 <p class="text-green-400 text-sm font-bold">16 ARTICLES • 3 HR AGO</p>
                 <h2 class="text-white text-lg font-bold">Nvidia GeForce RTX 5080 Leak Reveals Key Specs Ahead of CES 2025</h2>
