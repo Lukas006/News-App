@@ -66,7 +66,7 @@
         <div id="search-page" class="page hidden">
             <div class="p-6">
                 <h1 class="text-xl font-semibold text-gray-800 mb-4">Search Articles</h1>
-                
+
                 <!-- Google Custom Search Box -->
                 <div class="gcse-search"></div>
 
@@ -76,13 +76,41 @@
         <!-- Settings Seite -->
         <div id="settings-page" class="page hidden">
             <div class="p-6">
-                <h2 class="text-xl font-semibold text-gray-800">Settings</h2>
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Settings</h2>
+
+                <!-- Dark Mode Toggle -->
                 <div class="mt-4">
                     <label for="theme-toggle" class="block text-gray-600">Dark Mode</label>
-                    <input type="checkbox" id="theme-toggle" class="mt-2">
+                    <input type="checkbox" id="theme-toggle" class="mt-2 rounded-md bg-gray-200 p-2">
+                </div>
+
+                <!-- Language Selection -->
+                <div class="mt-4">
+                    <label for="language-select" class="block text-gray-600">Language</label>
+                    <select id="language-select" class="mt-2 w-full p-2 rounded-md bg-gray-200">
+                        <option value="en">English</option>
+                        <option value="de">Deutsch</option>
+                    </select>
+                </div>
+
+                <!-- Notifications Toggle -->
+                <div class="mt-4">
+                    <label for="notifications-toggle" class="block text-gray-600">Enable Notifications</label>
+                    <input type="checkbox" id="notifications-toggle" class="mt-2 rounded-md bg-gray-200 p-2">
+                </div>
+
+                <!-- Font Size Adjust -->
+                <div class="mt-4">
+                    <label for="font-size-select" class="block text-gray-600">Font Size</label>
+                    <select id="font-size-select" class="mt-2 w-full p-2 rounded-md bg-gray-200">
+                        <option value="text-base">Medium</option>
+                        <option value="text-lg">Large</option>
+                        <option value="text-sm">Small</option>
+                    </select>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- Taskbar -->
