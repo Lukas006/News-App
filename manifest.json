@@ -1,6 +1,6 @@
 {
-    "name": "News Feed",
-    "short_name": "NewsFeed",
+    "name": "L-News",
+    "short_name": "L-News",
     "description": "A modern news feed web app.",
     "start_url": "/index.html",
     "display": "standalone",
@@ -8,12 +8,12 @@
     "theme_color": "#ffffff",
     "icons": [
       {
-        "src": "icon.png",
+        "src": "imgs/icon_1.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "icon.png",
+        "src": "imgs/icon_2.png",
         "sizes": "512x512",
         "type": "image/png"
       }
