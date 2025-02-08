@@ -65,8 +65,10 @@
         <!-- Search Seite -->
         <div id="search-page" class="page hidden">
             <div class="p-6">
-                <input type="text" id="search-input" class="w-full p-3 rounded-lg border border-gray-300" placeholder="Search articles...">
-                <div id="search-results" class="mt-4"></div>
+                <h1 class="text-xl font-semibold text-gray-800 mb-4">Search Articles</h1>
+                
+                <!-- Google Custom Search Engine -->
+                <div class="gcse-search"></div>
             </div>
         </div>
 
@@ -123,32 +125,12 @@
             }
         });
 
-        // Suchfunktion
-        const searchInput = document.getElementById('search-input');
-        const searchResults = document.getElementById('search-results');
-
-        searchInput.addEventListener('input', () => {
-            const query = searchInput.value.toLowerCase();
-            if (query.length === 0) {
-                searchResults.innerHTML = '';
-                return;
-            }
-
-            // Beispielhafte Suche
-            const articles = [
-                'Nvidia GeForce RTX 5080 Leak',
-                'NFL Playoff Buzz',
-                'Apple’s New iPhone 15 Features'
-            ];
-
-            const filteredResults = articles.filter(article => article.toLowerCase().includes(query));
-            searchResults.innerHTML = filteredResults.map(result => `<p class="text-gray-800">${result}</p>`).join('');
-        });
-
         // Initiale Ansicht: Home-Seite anzeigen
         navigateTo('home');
     </script>
 
+    <!-- Google Custom Search Engine Script -->
+    <script async src="https://cse.google.com/cse.js?cx=27968ad0ac7d1440f"></script>
 </body>
 
 </html>
