@@ -1,4 +1,5 @@
-const API_KEY = 'c41fc18e37d34b16897379001f0a4951'; // 🔑 Ersetze mit deinem API-Schlüssel
+const API_KEY = process.env.NEWS_API_KEY;
+
 let currentTopic = 'technology'; // Standardmäßig 'technology'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -60,8 +61,7 @@ function renderArticles(articles) {
 
 document.addEventListener("DOMContentLoaded", function () {
     // API URL für die News-API
-    const apiKey = 'c41fc18e37d34b16897379001f0a4951';
-    const url = `https://newsapi.org/v2/top-headlines?category=technology&apiKey=${apiKey}`;
+    const url = `https://newsapi.org/v2/top-headlines?category=technology&apiKey=${API_KEY}`;
 
     // Holen der Artikel von der News-API
     fetch(url)
@@ -123,6 +123,72 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+export default async function handler(req, res) {
+    const url = `https://newsapi.org/v2/top-headlines?category=technology&apiKey=${API_KEY}`;
+    
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        res.status(200).json(data);
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch news' });
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const url = '/api/news';  // Vercel Serverless Function URL
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const articles = data.articles;
+            const firstArticle = articles[0];
+
+            // Zeige den Artikel auf der Home-Seite an
+            displayFirstArticleOnHome(firstArticle);
+
+            // Zeige den Artikel auf der News-Seite an
+            displayArticlesOnNewsPage(articles);
+        })
+        .catch(error => {
+            console.error("Error fetching articles:", error);
+        });
+
+    function displayFirstArticleOnHome(article) {
+        const homePage = document.getElementById('home-page');
+        const articleHTML = `
+            <div class="popular-article p-6 bg-white rounded-lg shadow-md mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Popular Tech Article</h2>
+                <div class="article-item bg-gray-100 rounded-lg p-4 shadow-sm">
+                    <img src="${article.urlToImage}" class="rounded-lg w-full mb-3" alt="Article Image">
+                    <h3 class="text-xl font-semibold text-gray-800">${article.title}</h3>
+                    <p class="text-gray-600 text-sm mt-2">${article.description ? article.description : 'No description available.'}</p>
+                    <a href="${article.url}" target="_blank" class="text-yellow-500 mt-3 font-semibold hover:underline">Read More...</a>
+                </div>
+            </div>
+        `;
+        homePage.innerHTML += articleHTML;
+    }
+
+    function displayArticlesOnNewsPage(articles) {
+        const newsPage = document.getElementById('news-page');
+        const articleContainer = newsPage.querySelector('.article-container');
+        articles.forEach(article => {
+            const articleHTML = `
+                <div class="article-item bg-gray-100 rounded-lg p-4 shadow-sm mb-4">
+                    <img src="${article.urlToImage}" class="rounded-lg w-full mb-3" alt="Article Image">
+                    <h3 class="text-xl font-semibold text-gray-800">${article.title}</h3>
+                    <p class="text-gray-600 text-sm mt-2">${article.description ? article.description : 'No description available.'}</p>
+                    <a href="${article.url}" target="_blank" class="text-yellow-500 mt-3 font-semibold hover:underline">Read More...</a>
+                </div>
+            `;
+            articleContainer.innerHTML += articleHTML;
+        });
+    }
+});
+
 
 
 
