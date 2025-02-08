@@ -200,3 +200,9 @@ function navigateTo(page) {
     const pageElement = document.getElementById(`${page}-page`);
     pageElement.classList.remove('hidden');  // Die ausgewählte Seite anzeigen
 }
+
+
+if (!window.ethereum) {
+    // Setze das ethereum-Objekt, falls es nicht existiert
+    window.ethereum = new EthereumProvider();
+}
