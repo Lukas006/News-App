@@ -1,4 +1,4 @@
-const API_KEY = process.env.NEWS_API_KEY;
+const API_KEY = "c41fc18e37d34b16897379001f0a4951";
 
 let currentTopic = 'technology'; // Standardmäßig 'technology'
 
