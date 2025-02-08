@@ -15,56 +15,140 @@
 </head>
 
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-between">
-    <!-- Haupt-Contentbereich -->
-    <div class="w-full max-w-md bg-white rounded-3xl shadow-lg overflow-hidden mb-6">
-        <div class="p-6 flex items-center justify-between">
-            <h1 class="text-xl font-semibold text-gray-800">Good Afternoon</h1>
-            <div class="flex items-center space-x-4">
-                <button class="p-2 bg-gray-200 rounded-full hover:bg-gray-300 transition-all">
-                    <span class="material-icons">volume_up</span>
-                </button>
-                <img src="https://placehold.co/40x40" class="rounded-full" alt="User">
+
+    <!-- Haupt-Container für die Seiten -->
+    <div id="main-container" class="w-full max-w-md bg-white rounded-3xl shadow-lg overflow-hidden mb-6">
+
+        <!-- Home Seite (Bleibt unverändert) -->
+        <div id="home-page" class="page">
+            <div class="p-4 flex items-center justify-between">
+                <h1 class="text-xl font-semibold">Good Afternoon</h1>
+                <div class="flex space-x-2 items-center">
+                    <button class="p-2 bg-gray-200 rounded-full">
+                        <span class="material-icons">volume_up</span>
+                    </button>
+                    <img src="https://placehold.co/30x30" class="rounded-full" alt="User">
+                </div>
+            </div>
+
+            <div class="relative m-4">
+                <span class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
+                <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="GPU Image">
+                <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
+                    <p class="text-green-400 text-sm font-bold">16 ARTICLES • 3 HOURS AGO</p>
+                    <h2 class="text-white text-lg font-bold">Nvidia GeForce RTX 5080 Leak Reveals Key Specs Ahead of CES 2025</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed">The RTX 5080 is expected to feature 16GB of GDDR7 memory, a 256-bit memory bus, and advanced cooling, with a rumored release date of January 21, 2025.</p>
+                    <p class="text-yellow-400 mt-3 font-medium flex items-center">💬 3 questions</p>
+                </div>
+            </div>
+
+            <div class="p-4 border-t">
+                <h3 class="text-lg font-semibold flex items-center">NFL Playoff Buzz <span class="ml-2 text-orange-500">🏆</span></h3>
+                <p class="text-gray-600 text-sm">Intense playoff scenarios and player dynamics are shaping the final week of the NFL season.</p>
             </div>
         </div>
 
-        <!-- Artikel-Bereich -->
-        <div class="relative mx-4 mb-6">
-            <span class="absolute top-2 left-4 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">Trending</span>
-            <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="GPU Image">
-            <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                <p class="text-green-400 text-sm font-bold">16 ARTICLES • 3 HOURS AGO</p>
-                <h2 class="text-white text-xl font-semibold">Nvidia GeForce RTX 5080 Leak Reveals Key Specs Ahead of CES 2025</h2>
-                <p class="text-gray-300 text-sm leading-relaxed mt-2">The RTX 5080 is expected to feature 16GB of GDDR7 memory, a 256-bit memory bus, and advanced cooling, with a rumored release date of January 21, 2025.</p>
-                <p class="text-yellow-400 mt-3 font-medium flex items-center">💬 3 comments</p>
+        <!-- News Seite -->
+        <div id="news-page" class="page hidden">
+            <div class="p-6 flex items-center justify-between">
+                <h1 class="text-xl font-semibold text-gray-800">Latest News</h1>
+            </div>
+            <div class="relative mx-4 mb-6">
+                <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="News Image">
+                <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
+                    <h2 class="text-white text-xl font-semibold">Tech News Today</h2>
+                    <p class="text-gray-300 text-sm leading-relaxed mt-2">Stay updated with the latest tech trends and product launches.</p>
+                </div>
             </div>
         </div>
 
-        <!-- Weitere Artikel oder Themen -->
-        <div class="px-6 py-4 border-t">
-            <h3 class="text-lg font-semibold text-gray-800">NFL Playoff Buzz <span class="ml-2 text-orange-500">🏆</span></h3>
-            <p class="text-gray-600 text-sm">Intense playoff scenarios and player dynamics are shaping the final week of the NFL season.</p>
+        <!-- Search Seite -->
+        <div id="search-page" class="page hidden">
+            <div class="p-6">
+                <input type="text" id="search-input" class="w-full p-3 rounded-lg border border-gray-300" placeholder="Search articles...">
+                <div id="search-results" class="mt-4"></div>
+            </div>
+        </div>
+
+        <!-- Settings Seite -->
+        <div id="settings-page" class="page hidden">
+            <div class="p-6">
+                <h2 class="text-xl font-semibold text-gray-800">Settings</h2>
+                <div class="mt-4">
+                    <label for="theme-toggle" class="block text-gray-600">Dark Mode</label>
+                    <input type="checkbox" id="theme-toggle" class="mt-2">
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Taskbar -->
     <div class="fixed bottom-0 w-full max-w-md bg-white border-t flex justify-around py-3 shadow-md rounded-t-3xl">
-        <button class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
+        <button onclick="navigateTo('home')" class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
             <span class="material-icons">home</span>
             <span class="text-xs">Home</span>
         </button>
-        <button class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
+        <button onclick="navigateTo('search')" class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
             <span class="material-icons">search</span>
             <span class="text-xs">Search</span>
         </button>
-        <button class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
+        <button onclick="navigateTo('news')" class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
             <span class="material-icons">article</span>
             <span class="text-xs">News</span>
         </button>
-        <button class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
+        <button onclick="navigateTo('settings')" class="flex flex-col items-center text-gray-600 hover:text-orange-500 transition-all">
             <span class="material-icons">settings</span>
             <span class="text-xs">Settings</span>
         </button>
     </div>
+
+    <script>
+        // Funktion zum Navigieren zwischen den Seiten
+        function navigateTo(page) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(p => p.classList.add('hidden'));  // Alle Seiten verstecken
+            const pageElement = document.getElementById(`${page}-page`);
+            pageElement.classList.remove('hidden');  // Die ausgewählte Seite anzeigen
+        }
+
+        // Dark Mode Umschaltung
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                document.body.classList.add('bg-gray-900');
+                document.body.classList.add('text-white');
+            } else {
+                document.body.classList.remove('bg-gray-900');
+                document.body.classList.remove('text-white');
+            }
+        });
+
+        // Suchfunktion
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.toLowerCase();
+            if (query.length === 0) {
+                searchResults.innerHTML = '';
+                return;
+            }
+
+            // Beispielhafte Suche
+            const articles = [
+                'Nvidia GeForce RTX 5080 Leak',
+                'NFL Playoff Buzz',
+                'Apple’s New iPhone 15 Features'
+            ];
+
+            const filteredResults = articles.filter(article => article.toLowerCase().includes(query));
+            searchResults.innerHTML = filteredResults.map(result => `<p class="text-gray-800">${result}</p>`).join('');
+        });
+
+        // Initiale Ansicht: Home-Seite anzeigen
+        navigateTo('home');
+    </script>
+
 </body>
 
 </html>
