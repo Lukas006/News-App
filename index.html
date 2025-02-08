@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>News Feed UI</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body class="bg-gray-100 p-4">
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-between">
+    <div class="w-full max-w-sm bg-white rounded-xl shadow-md overflow-hidden">
         <div class="p-4 flex items-center justify-between">
             <h1 class="text-xl font-semibold">Good Afternoon</h1>
             <div class="flex space-x-2 items-center">
-                <button class="p-2 bg-gray-200 rounded-full">🔊</button>
+                <button class="p-2 bg-gray-200 rounded-full">
+                    <span class="material-icons">volume_up</span>
+                </button>
                 <img src="https://via.placeholder.com/30" class="rounded-full" alt="User">
             </div>
         </div>
@@ -31,6 +34,26 @@
             <h3 class="text-lg font-semibold flex items-center">NFL Playoff Buzz <span class="ml-2 text-orange-500">🏆</span></h3>
             <p class="text-gray-600 text-sm">Intense playoff scenarios and player dynamics are shaping the final week of the NFL season.</p>
         </div>
+    </div>
+    
+    <!-- Task Bar -->
+    <div class="fixed bottom-0 w-full max-w-sm bg-white border-t flex justify-around py-3 shadow-md">
+        <button class="flex flex-col items-center text-gray-600 hover:text-black">
+            <span class="material-icons">home</span>
+            <span class="text-xs">Home</span>
+        </button>
+        <button class="flex flex-col items-center text-gray-600 hover:text-black">
+            <span class="material-icons">search</span>
+            <span class="text-xs">Search</span>
+        </button>
+        <button class="flex flex-col items-center text-gray-600 hover:text-black">
+            <span class="material-icons">article</span>
+            <span class="text-xs">News</span>
+        </button>
+        <button class="flex flex-col items-center text-gray-600 hover:text-black">
+            <span class="material-icons">settings</span>
+            <span class="text-xs">Settings</span>
+        </button>
     </div>
 </body>
 </html>
