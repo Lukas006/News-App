@@ -13,18 +13,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="News Feed">
     <link rel="apple-touch-icon" href="icon.png">
+    <script src="script.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-between">
-
-    <!-- Haupt-Container für die Seiten -->
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col items-center justify-between" id="body">
     <div id="main-container" class="w-full max-w-md bg-white rounded-3xl shadow-lg overflow-hidden mb-6">
 
-        <!-- Home Seite (Bleibt unverändert) -->
+        <!-- Home Seite -->
         <div id="home-page" class="page">
-            <div class="p-4 flex items-center justify-between">
-                <h1 class="text-xl font-semibold mb-4">Good Afternoon</h1> <!-- Hier haben wir mb-4 hinzugefügt für 16px Abstand -->
+            <div class="p-6 flex items-center justify-between">
+                <h1 class="text-2xl font-semibold text-gray-800">Good Afternoon</h1>
                 <div class="flex space-x-2 items-center">
                     <button class="p-2 bg-gray-200 rounded-full">
                         <span class="material-icons">volume_up</span>
@@ -32,67 +32,47 @@
                     <img src="https://placehold.co/30x30" class="rounded-full" alt="User">
                 </div>
             </div>
-            
-            <div class="relative m-4">
-                <span class="absolute top-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded-full">Popular</span>
-                <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="GPU Image">
-                <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                    <p class="text-green-400 text-sm font-bold">16 ARTICLES • 3 HOURS AGO</p>
-                    <h2 class="text-white text-lg font-bold">Nvidia GeForce RTX 5080 Leak Reveals Key Specs Ahead of CES 2025</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed">The RTX 5080 is expected to feature 16GB of GDDR7 memory, a 256-bit memory bus, and advanced cooling, with a rumored release date of January 21, 2025.</p>
-                    <p class="text-yellow-400 mt-3 font-medium flex items-center">💬 3 questions</p>
+
+            <!-- Einführung -->
+            <div class="intro-section p-6 bg-white rounded-lg shadow-md mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Welcome to News Feed</h2>
+                <p class="text-gray-600 mt-3">Stay up to date with the latest news in technology, sports, business, and more. Your daily source for everything you need to know!</p>
+            </div>
+                <h2 class="text-xl font-semibold text-gray-800"></h2>
+                <!-- Der Artikel wird hier durch JavaScript eingefügt -->
+                <div class="article-container">
+                    <!-- Hier wird der erste Artikel angezeigt -->
                 </div>
-            </div>
-            
-            <div class="p-4 border-t">
-                <h3 class="text-lg font-semibold flex items-center">NFL Playoff Rizz <span class="ml-2 text-orange-500">🏆</span></h3>
-                <p class="text-gray-600 text-sm">Intense playoff scenarios and player dynamics are shaping the final week of the NFL season.</p>
-            </div>
         </div>
-        
+
+
+
         <!-- News Seite -->
-       <div id="news-page" class="page hidden">
-            <div class="p-6 flex items-center justify-between">
+        <div id="news-page" class="page hidden">
+            <div class="p-6">
                 <h1 class="text-xl font-semibold text-gray-800">Latest News</h1>
+
+                <!-- Dropdown für Themen -->
+                <select id="topic-select" class="mt-4 p-2 border rounded-md bg-white" onchange="fetchNews()">
+                    <option value="technology">Technology</option>
+                    <option value="sports">Sports</option>
+                    <option value="business">Business</option>
+                    <option value="health">Health</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="science">Science</option>
+                </select>
+
+                <h2 class="text-xl font-semibold text-gray-800 mt-6">News Articles</h2>
             </div>
 
-            <!-- News Artikel 1 -->
-            <div class="relative mx-4 mb-6">
-                <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="News Image 1">
-              <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                    <h2 class="text-white text-xl font-semibold">The Future of AI in 2025</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">Artificial Intelligence is poised to disrupt many industries, from healthcare to entertainment, in the next few years.</p>
-                </div>
-             </div>
+            <!-- News Container -->
+            <div id="news-container" class="space-y-6 px-4 pb-6"></div>
 
-          <!-- News Artikel 2 -->
-           <div class="relative mx-4 mb-6">
-              <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="News Image 2">
-              <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                 <h2 class="text-white text-xl font-semibold">Electric Cars: Revolutionizing the Future</h2>
-                    <p class="text-gray-300 text-sm leading-relaxed mt-2">As electric cars become more mainstream, they are revolutionizing the automotive industry and pushing us toward sustainable energy solutions.</p>
-                </div>
-         </div>
-
-            <!-- News Artikel 3 -->
-            <div class="relative mx-4 mb-6">
-               <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="News Image 3">
-             <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                   <h2 class="text-white text-xl font-semibold">New Breakthrough in Quantum Computing</h2>
-                 <p class="text-gray-300 text-sm leading-relaxed mt-2">Scientists have made a significant breakthrough in quantum computing, which could lead to faster and more secure systems in the future.</p>
-                </div>
-         </div>
-
-           <!-- News Artikel 4 -->
-         <div class="relative mx-4 mb-6">
-               <img src="https://placehold.co/350x200" class="rounded-lg w-full" alt="News Image 4">
-               <div class="absolute bottom-0 left-0 bg-gradient-to-t from-black/80 to-transparent p-6 w-full rounded-b-lg">
-                  <h2 class="text-white text-xl font-semibold">SpaceX Launches New Mars Mission</h2>
-                  <p class="text-gray-300 text-sm leading-relaxed mt-2">SpaceX is making strides in its mission to send humans to Mars, marking a new era in space exploration.</p>
-             </div>
-         </div>
+            <!-- Loading Spinner -->
+            <div id="loading-spinner" class="text-center my-4 hidden">
+                <span>Loading more articles...</span>
+            </div>
         </div>
-
 
         <!-- Search Seite -->
         <div id="search-page" class="page hidden">
@@ -105,43 +85,20 @@
             </div>
         </div>
 
+
         <!-- Settings Seite -->
         <div id="settings-page" class="page hidden">
             <div class="p-6">
-                <h2 class="text-xl font-semibold text-gray-800 mb-4">Settings</h2>
-
-                <!-- Dark Mode Toggle -->
+                <h2 class="text-xl font-semibold text-gray-800">Settings</h2>
                 <div class="mt-4">
                     <label for="theme-toggle" class="block text-gray-600">Dark Mode</label>
-                    <input type="checkbox" id="theme-toggle" class="mt-2 rounded-md bg-gray-200 p-2">
-                </div>
-
-                <!-- Language Selection -->
-                <div class="mt-4">
-                    <label for="language-select" class="block text-gray-600">Language</label>
-                    <select id="language-select" class="mt-2 w-full p-2 rounded-md bg-gray-200">
-                        <option value="en">English</option>
-                        <option value="de">Deutsch</option>
-                    </select>
-                </div>
-
-                <!-- Notifications Toggle -->
-                <div class="mt-4">
-                    <label for="notifications-toggle" class="block text-gray-600">Enable Notifications</label>
-                    <input type="checkbox" id="notifications-toggle" class="mt-2 rounded-md bg-gray-200 p-2">
-                </div>
-
-                <!-- Font Size Adjust -->
-                <div class="mt-4">
-                    <label for="font-size-select" class="block text-gray-600">Font Size</label>
-                    <select id="font-size-select" class="mt-2 w-full p-2 rounded-md bg-gray-200">
-                        <option value="text-base">Medium</option>
-                        <option value="text-lg">Large</option>
-                        <option value="text-sm">Small</option>
-                    </select>
+                    <input type="checkbox" id="theme-toggle" class="mt-2">
                 </div>
             </div>
         </div>
+
+
+
 
     </div>
 
@@ -165,35 +122,9 @@
         </button>
     </div>
 
-    <script>
-        // Funktion zum Navigieren zwischen den Seiten
-        function navigateTo(page) {
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(p => p.classList.add('hidden'));  // Alle Seiten verstecken
-            const pageElement = document.getElementById(`${page}-page`);
-            pageElement.classList.remove('hidden');  // Die ausgewählte Seite anzeigen
-        }
-
-        // Dark Mode Umschaltung
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('change', () => {
-            if (themeToggle.checked) {
-                document.body.classList.add('bg-gray-900');
-                document.body.classList.add('text-white');
-            } else {
-                document.body.classList.remove('bg-gray-900');
-                document.body.classList.remove('text-white');
-            }
-        });
-
-        // Initiale Ansicht: Home-Seite anzeigen
-        navigateTo('home');
-    </script>
-
     <!-- Google Custom Search Engine Script -->
     <script async src="https://cse.google.com/cse.js?cx=27968ad0ac7d1440f"></script>
+
 </body>
-
-
 
 </html>

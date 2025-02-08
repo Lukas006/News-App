@@ -32,3 +32,278 @@
     font-size: 14px;
     color: #555;
 }
+
+/* News Card Styling */
+.news-card {
+    @apply bg-white rounded-2xl shadow-lg overflow-hidden transition-transform duration-200 hover:scale-[1.02];
+}
+
+/* Bild Styling */
+.news-card img {
+    @apply w-full h-52 object-cover rounded-t-2xl;
+}
+
+/* Inhalt */
+.news-content {
+    @apply p-4;
+}
+
+/* Titel */
+.news-title {
+    @apply text-lg font-semibold text-gray-800 leading-tight;
+}
+
+/* Beschreibung */
+.news-description {
+    @apply text-sm text-gray-600 mt-2;
+}
+
+/* Meta-Infos (Datum + Read More) */
+.news-meta {
+    @apply text-xs text-gray-500 mt-3 flex justify-between items-center;
+}
+
+/* Read More Link */
+.read-more {
+    @apply text-blue-600 hover:text-blue-800 font-medium;
+}
+
+/* Dark Mode Styles */
+.dark {
+    background-color: #1a202c;
+    color: #f7fafc;
+}
+
+.dark .page {
+    background-color: #2d3748;
+    color: white;
+}
+
+.dark .news-item {
+    background-color: #4a5568;
+}
+
+.dark .read-more {
+    color: #f6e05e;
+}
+
+#topic-select {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#topic-select:focus {
+    outline: none;
+    border-color: #ff7f50; /* Beispiel für Fokusfarbe */
+}
+
+#bg-color-select {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: white;
+    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#bg-color-select:focus {
+    outline: none;
+    border-color: #ff7f50; /* Beispiel für Fokusfarbe */
+}
+
+
+/* Einführung - Willkommen Abschnitt */
+.intro-section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.intro-section p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Beliebte Artikel */
+.popular-articles {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.article-item {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-item img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Aktionsbuttons */
+.action-buttons {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.action-buttons button:hover {
+    cursor: pointer;
+}
+
+.action-buttons button.bg-blue-500 {
+    background-color: #3b82f6;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons button.bg-green-500 {
+    background-color: #10b981;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekte */
+.action-buttons button:hover.bg-blue-500 {
+    background-color: #2563eb;
+}
+
+.action-buttons button:hover.bg-green-500 {
+    background-color: #059669;
+}
+
+
+/* Einführung - Willkommen Abschnitt */
+.intro-section {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.intro-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.intro-section p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Beliebtester Artikel */
+.popular-article {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.article-item {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.article-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.article-item img {
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.article-item h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.article-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.article-item a {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fbbf24; /* Gelb für den "Read More"-Link */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.article-item a:hover {
+    color: #f59e0b; /* Dunkleres Gelb beim Hover */
+}
+
+/* Aktionsbuttons */
+.action-buttons {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.action-buttons button:hover {
+    cursor: pointer;
+}
+
+.action-buttons button.bg-blue-500 {
+    background-color: #3b82f6;
+    transition: background-color 0.3s ease;
+}
+
+.action-buttons button.bg-green-500 {
+    background-color: #10b981;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover-Effekte */
+.action-buttons button:hover.bg-blue-500 {
+    background-color: #2563eb;
+}
+
+.action-buttons button:hover.bg-green-500 {
+    background-color: #059669;
+}
