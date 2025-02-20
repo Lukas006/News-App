@@ -1,5 +1,6 @@
 const API_KEY = "c41fc18e37d34b16897379001f0a4951";
-
+let currentPage = 1; // Anfangsseite
+const pageSize = 10; // Anzahl der Artikel pro Abruf
 let currentTopic = 'technology'; // Standardmäßig 'technology'
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -8,19 +9,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
 // Funktion zum Abrufen der Nachrichten
 function fetchNews() {
-    // Holen des ausgewählten Themas aus dem Dropdown
     const topicSelect = document.getElementById('topic-select');
     currentTopic = topicSelect.value;
 
-    const NEWS_URL = `https://newsapi.org/v2/top-headlines?category=${currentTopic}&language=en&sortBy=publishedAt&pageSize=90&apiKey=${API_KEY}`;
+    const NEWS_URL = `https://newsapi.org/v2/top-headlines?category=${currentTopic}&language=en&sortBy=publishedAt&pageSize=${pageSize}&page=${currentPage}&apiKey=${API_KEY}`;
 
-    fetch(NEWS_URL)
+    // Verwende einen öffentlichen CORS-Proxy
+    const PROXY_URL = "https://corsproxy.io/?";
+    const FETCH_URL = PROXY_URL + encodeURIComponent(NEWS_URL);
+
+    fetch(FETCH_URL)
         .then(response => response.json())
-        .then(data => renderArticles(data.articles))
+        .then(data => {
+            renderArticles(data.articles);
+            currentPage++; // Erhöhe die Seite für den nächsten Abruf
+        })
         .catch(error => console.error("Fehler beim Laden der News:", error));
 }
+
 
 
 // Funktion zum Kürzen der Beschreibung
@@ -33,7 +42,6 @@ function truncateDescription(text) {
 // Funktion zum Rendern der Artikel
 function renderArticles(articles) {
     const newsContainer = document.getElementById("news-container");
-    newsContainer.innerHTML = ""; // Leere den Container vorher
 
     if (articles.length === 0) {
         newsContainer.innerHTML = "<p class='text-center text-gray-500'>No articles available for this topic.</p>";
@@ -57,6 +65,17 @@ function renderArticles(articles) {
         newsContainer.appendChild(newsItem);
     });
 }
+
+// Scroll-Event-Listener hinzufügen
+document.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    // Überprüfe, ob der Benutzer fast am Ende der Seite ist
+    if (scrollPosition >= pageHeight - 100) {
+        fetchNews(); // Neue Artikel nachladen
+    }
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -188,19 +207,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
-
-
-
-
-
-// Funktion zum Navigieren zu verschiedenen Seiten
-function navigateTo(page) {
-    const pages = document.querySelectorAll('.page');
-    pages.forEach(p => p.classList.add('hidden'));  // Alle Seiten verstecken
-    const pageElement = document.getElementById(`${page}-page`);
-    pageElement.classList.remove('hidden');  // Die ausgewählte Seite anzeigen
-}
-
 
 if (!window.ethereum) {
     // Setze das ethereum-Objekt, falls es nicht existiert
