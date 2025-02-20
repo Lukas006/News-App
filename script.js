@@ -15,20 +15,24 @@ function fetchNews() {
     const topicSelect = document.getElementById('topic-select');
     currentTopic = topicSelect.value;
 
-    const NEWS_URL = `https://newsapi.org/v2/top-headlines?category=${currentTopic}&language=en&sortBy=publishedAt&pageSize=${pageSize}&page=${currentPage}&apiKey=${API_KEY}`;
+    const NEWS_URL = `https://newsapi.org/v2/top-headlines?category=${currentTopic}&language=en&sortBy=publishedAt&pageSize=90&apiKey=${API_KEY}`;
 
-    // Verwende einen öffentlichen CORS-Proxy
     const PROXY_URL = "https://corsproxy.io/?";
     const FETCH_URL = PROXY_URL + encodeURIComponent(NEWS_URL);
 
     fetch(FETCH_URL)
         .then(response => response.json())
         .then(data => {
+            console.log("API Response:", data);  // Debugging: Zeigt die API-Antwort
+            if (!data.articles) {
+                console.error("Fehler: 'articles' ist undefined!", data);
+                return;
+            }
             renderArticles(data.articles);
-            currentPage++; // Erhöhe die Seite für den nächsten Abruf
         })
         .catch(error => console.error("Fehler beim Laden der News:", error));
 }
+
 
 
 
